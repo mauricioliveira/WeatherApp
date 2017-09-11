@@ -10,7 +10,7 @@ import retrofit2.http.Query;
  */
 
 public interface WeatherAPI {
-    @GET
+    @GET("weather?")
     Call<WeatherData> getCurrentWeather(@Query("lat") double lat,
                                         @Query("lon") double lon,
                                         @Query("APPID") String appid,
