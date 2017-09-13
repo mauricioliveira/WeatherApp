@@ -14,5 +14,6 @@ public interface WeatherAPI {
     Call<WeatherData> getCurrentWeather(@Query("lat") double lat,
                                         @Query("lon") double lon,
                                         @Query("APPID") String appid,
-                                        @Query("units") String units);
+                                        @Query("units") String units,
+                                        @Query("lang") String lang);
 }

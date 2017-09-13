@@ -8,7 +8,7 @@ import java.util.List;
 
 public class WeatherData {
     private Coord coord;
-    private List<Weather> weatherList;
+    private List<Weather> weather;
     private String base;
     private Main main;
     private Clouds clouds;
@@ -21,9 +21,9 @@ public class WeatherData {
     public WeatherData() {
     }
 
-    public WeatherData(Coord coord, List<Weather> weatherList, String base, Main main, Clouds clouds, int dt, Sys sys, int id, String name, int cod) {
+    public WeatherData(Coord coord, List<Weather> weather, String base, Main main, Clouds clouds, int dt, Sys sys, int id, String name, int cod) {
         this.coord = coord;
-        this.weatherList = weatherList;
+        this.weather = weather;
         this.base = base;
         this.main = main;
         this.clouds = clouds;
@@ -43,11 +43,11 @@ public class WeatherData {
     }
 
     public List<Weather> getWeatherList() {
-        return weatherList;
+        return weather;
     }
 
     public void setWeatherList(List<Weather> weatherList) {
-        this.weatherList = weatherList;
+        this.weather = weatherList;
     }
 
     public String getBase() {
