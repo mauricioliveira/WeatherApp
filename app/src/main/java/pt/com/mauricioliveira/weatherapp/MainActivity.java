@@ -1,6 +1,7 @@
 package pt.com.mauricioliveira.weatherapp;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.InputType;
 import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -44,14 +45,14 @@ public class MainActivity extends AppCompatActivity {
 
         ButterKnife.bind(MainActivity.this);
 
+        Util.checkAppPermissions(MainActivity.this);
+
         gpsTracker = new GpsTracker(MainActivity.this);
 
         //check if GPS is enable
         if(gpsTracker.isCanGetLocation()){
             double lat = gpsTracker.getLatitude();
             double lon = gpsTracker.getLongitude();
-            Log.e("GPS","Lat: "+lat);
-            Log.e("GPS","Lon: "+lon);
             getCurrentWeather(lat,lon);
         }else {
             gpsTracker.showSettingsAlert();
@@ -69,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(Call<WeatherData> call, Response<WeatherData> response) {
                 if (response.isSuccessful()) {
                     WeatherData weatherData = response.body();
-                    txtCity.setText(weatherData.getName() + "," + weatherData.getSys().getCountry());
+                    txtCity.setText(weatherData.getName());
                     txtLastUpdate.setText("Last Update: " + Util.getDateNow());
                     txtDescription.setText(weatherData.getWeatherList().get(0).getDescription());
                     txtHumidity.setText(weatherData.getMain().getHumidity() + "%");

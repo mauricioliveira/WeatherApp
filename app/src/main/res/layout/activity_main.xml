@@ -5,7 +5,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient"
+    android:background="@color/primary_light"
     tools:context="pt.com.mauricioliveira.weatherapp.MainActivity">
 
     <TextView
@@ -17,6 +17,7 @@
         android:text=""
         android:textStyle="bold"
         android:textSize="36sp"
+        android:textColor="@color/primary_text"
         />
 
     <TextView
@@ -27,6 +28,7 @@
         android:text=""
         android:textStyle="bold"
         android:textSize="10sp"
+        android:textColor="@color/secondary_text"
         />
     
     <ImageView
@@ -36,6 +38,17 @@
         android:layout_gravity="center"/>
 
     <TextView
+        android:id="@+id/txtCelsius"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text=""
+        android:textStyle="bold"
+        android:textSize="30sp"
+        android:textColor="@color/primary_text"
+        />
+
+    <TextView
         android:id="@+id/txtDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -43,6 +56,7 @@
         android:text=""
         android:textStyle="bold"
         android:textSize="30sp"
+        android:textColor="@color/secondary_text"
         />
 
     <TextView
@@ -53,6 +67,7 @@
         android:text=""
         android:textStyle="bold"
         android:textSize="30sp"
+        android:textColor="@color/secondary_text"
         />
 
     <TextView
@@ -63,16 +78,7 @@
         android:text=""
         android:textStyle="bold"
         android:textSize="30sp"
-        />
-
-    <TextView
-        android:id="@+id/txtCelsius"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text=""
-        android:textStyle="bold"
-        android:textSize="30sp"
+        android:textColor="@color/secondary_text"
         />
 
 </LinearLayout>
