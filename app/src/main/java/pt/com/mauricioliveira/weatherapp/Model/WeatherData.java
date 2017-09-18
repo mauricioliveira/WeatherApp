@@ -17,11 +17,12 @@ public class WeatherData {
     private int id;
     private String name;
     private int cod;
+    private Wind wind;
 
     public WeatherData() {
     }
 
-    public WeatherData(Coord coord, List<Weather> weather, String base, Main main, Clouds clouds, int dt, Sys sys, int id, String name, int cod) {
+    public WeatherData(Coord coord, List<Weather> weather, String base, Main main, Clouds clouds, int dt, Sys sys, int id, String name, int cod, Wind wind) {
         this.coord = coord;
         this.weather = weather;
         this.base = base;
@@ -32,6 +33,7 @@ public class WeatherData {
         this.id = id;
         this.name = name;
         this.cod = cod;
+        this.wind = wind;
     }
 
     public Coord getCoord() {
@@ -112,5 +114,13 @@ public class WeatherData {
 
     public void setCod(int cod) {
         this.cod = cod;
+    }
+
+    public Wind getWind() {
+        return wind;
+    }
+
+    public void setWind(Wind wind) {
+        this.wind = wind;
     }
 }

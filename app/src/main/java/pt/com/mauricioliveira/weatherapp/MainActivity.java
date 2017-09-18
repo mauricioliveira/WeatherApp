@@ -1,4 +1,5 @@
 package pt.com.mauricioliveira.weatherapp;
+
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.InputType;
@@ -29,12 +30,14 @@ public class MainActivity extends AppCompatActivity {
     ImageView imageView;
     @BindView(R.id.txtDescription)
     TextView txtDescription;
-    @BindView(R.id.txtHumidity)
-    TextView txtHumidity;
-    @BindView(R.id.txtTime)
-    TextView txtTime;
+    @BindView(R.id.txtHumidityValue)
+    TextView txtHumidityValue;
     @BindView(R.id.txtCelsius)
     TextView txtCelsius;
+    @BindView(R.id.min_max_value)
+    TextView min_max_value;
+    @BindView(R.id.wind_speed_value)
+    TextView wind_speed_value;
     Service service;
     GpsTracker gpsTracker;
 
@@ -50,11 +53,11 @@ public class MainActivity extends AppCompatActivity {
         gpsTracker = new GpsTracker(MainActivity.this);
 
         //check if GPS is enable
-        if(gpsTracker.isCanGetLocation()){
+        if (gpsTracker.isCanGetLocation()) {
             double lat = gpsTracker.getLatitude();
             double lon = gpsTracker.getLongitude();
-            getCurrentWeather(lat,lon);
-        }else {
+            getCurrentWeather(lat, lon);
+        } else {
             gpsTracker.showSettingsAlert();
         }
     }
@@ -73,9 +76,10 @@ public class MainActivity extends AppCompatActivity {
                     txtCity.setText(weatherData.getName());
                     txtLastUpdate.setText("Last Update: " + Util.getDateNow());
                     txtDescription.setText(weatherData.getWeatherList().get(0).getDescription());
-                    txtHumidity.setText(weatherData.getMain().getHumidity() + "%");
-                    txtTime.setText(Util.unixTimeStampToDateTime(weatherData.getSys().getSunrise()) + "/" + Util.unixTimeStampToDateTime(weatherData.getSys().getSunset()));
+                    txtHumidityValue.setText(weatherData.getMain().getHumidity() + "%");
                     txtCelsius.setText(weatherData.getMain().getTemp() + "°C");
+                    min_max_value.setText(weatherData.getMain().getTemp_min() + "°C / " + weatherData.getMain().getTemp_max() + "°C");
+                    wind_speed_value.setText(weatherData.getWind().getSpeed() + " m/s");
                     Picasso.with(MainActivity.this)
                             .load(Util.getImageUrl(weatherData.getWeatherList().get(0).getIcon()))
                             .into(imageView);
@@ -102,6 +106,6 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
         double lat = gpsTracker.getLatitude();
         double lon = gpsTracker.getLongitude();
-        getCurrentWeather(lat,lon);
+        getCurrentWeather(lat, lon);
     }
 }

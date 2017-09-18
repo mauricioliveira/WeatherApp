@@ -20,7 +20,7 @@ public class Util {
     public static final String BASE_URL = "http://api.openweathermap.org/data/2.5/";
     public static final String API_KEY = "f4a43230f6c618b1b2f39cc8c6b1d42c";
     public static final String UNITS = "metric";
-    public static final String LANGUAGE = "pt";
+    public static final String LANGUAGE = "en";
     private static final int ALL_PERMISSIONS_REQUEST = 1337;
 
     //method will get a image from OpenWeather

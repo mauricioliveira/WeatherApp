@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">WeatherApp</string>
+    <string name="humdityString">Humidity: </string>
+    <string name="min_max">Min/Max: </string>
+    <string name="wind_speed">Wind Speed: </string>
 </resources>
