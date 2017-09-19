@@ -12,5 +12,9 @@ This application use libraries such as:
 * [ButterKnife](http://jakewharton.github.io/butterknife/) - Field and method binding for Android views
 * [Picasso](http://square.github.io/picasso/) - Image downloading and caching library for Android
 
+## Screenshot
+
+![alt text](https://i.imgur.com/63xqvg2.png "Description goes here")
+
 
 
