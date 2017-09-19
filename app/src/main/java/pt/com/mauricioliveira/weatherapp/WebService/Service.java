@@ -1,10 +1,6 @@
-package pt.com.mauricioliveira.weatherapp.Service;
+package pt.com.mauricioliveira.weatherapp.WebService;
 
-import pt.com.mauricioliveira.weatherapp.Interface.WeatherAPI;
-import pt.com.mauricioliveira.weatherapp.Model.WeatherData;
-import pt.com.mauricioliveira.weatherapp.Util.Util;
-import retrofit2.Call;
-import retrofit2.Callback;
+import pt.com.mauricioliveira.weatherapp.Helper.Constants;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -15,7 +11,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class Service {
 
     public static Retrofit retrofit = new Retrofit.Builder()
-            .baseUrl(Util.BASE_URL)
+            .baseUrl(Constants.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build();
 

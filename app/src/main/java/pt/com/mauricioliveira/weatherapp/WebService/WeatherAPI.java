@@ -1,4 +1,4 @@
-package pt.com.mauricioliveira.weatherapp.Interface;
+package pt.com.mauricioliveira.weatherapp.WebService;
 
 import pt.com.mauricioliveira.weatherapp.Model.WeatherData;
 import retrofit2.Call;

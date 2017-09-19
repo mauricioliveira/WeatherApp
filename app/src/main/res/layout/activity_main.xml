@@ -75,7 +75,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/divider"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp">
 
         <TextView
             android:id="@+id/txtHumidity"
@@ -84,7 +85,7 @@
             android:layout_marginTop="25dp"
             android:text="@string/humdityString"
             android:textColor="@color/primary_text"
-            android:textSize="30sp"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
         <TextView
@@ -94,7 +95,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginTop="25dp"
             android:textColor="@color/secondary_text"
-            android:textSize="30sp"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
     </LinearLayout>
@@ -113,7 +114,7 @@
             android:layout_height="wrap_content"
             android:text="@string/min_max"
             android:textColor="@color/primary_text"
-            android:textSize="30sp"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
         <TextView
@@ -122,7 +123,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:textColor="@color/secondary_text"
-            android:textSize="30sp"
+            android:textSize="20sp"
             android:textStyle="bold" />
     </LinearLayout>
 
@@ -140,7 +141,7 @@
             android:layout_height="wrap_content"
             android:text="@string/wind_speed"
             android:textColor="@color/primary_text"
-            android:textSize="30sp"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
         <TextView
@@ -149,7 +150,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:textColor="@color/secondary_text"
-            android:textSize="30sp"
+            android:textSize="20sp"
             android:textStyle="bold" />
     </LinearLayout>
 

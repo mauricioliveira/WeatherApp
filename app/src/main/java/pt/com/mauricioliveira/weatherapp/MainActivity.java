@@ -1,8 +1,13 @@
 package pt.com.mauricioliveira.weatherapp;
 
-import android.support.v7.app.AppCompatActivity;
+import android.Manifest;
+import android.annotation.TargetApi;
+import android.app.Activity;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
-import android.text.InputType;
+import android.support.v4.app.ActivityCompat;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -12,10 +17,11 @@ import com.squareup.picasso.Picasso;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import pt.com.mauricioliveira.weatherapp.GPSTracker.GpsTracker;
-import pt.com.mauricioliveira.weatherapp.Interface.WeatherAPI;
+import pt.com.mauricioliveira.weatherapp.Helper.Constants;
+import pt.com.mauricioliveira.weatherapp.Helper.Util;
 import pt.com.mauricioliveira.weatherapp.Model.WeatherData;
-import pt.com.mauricioliveira.weatherapp.Service.Service;
-import pt.com.mauricioliveira.weatherapp.Util.Util;
+import pt.com.mauricioliveira.weatherapp.WebService.Service;
+import pt.com.mauricioliveira.weatherapp.WebService.WeatherAPI;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -40,6 +46,13 @@ public class MainActivity extends AppCompatActivity {
     TextView wind_speed_value;
     Service service;
     GpsTracker gpsTracker;
+    private static final int ALL_PERMISSIONS_REQUEST = 1337;
+    private static final String[] ALL_PERMISSIONS = {
+            Manifest.permission.ACCESS_FINE_LOCATION,
+            Manifest.permission.ACCESS_COARSE_LOCATION,
+            Manifest.permission.READ_PHONE_STATE,
+            Manifest.permission.ACCESS_NETWORK_STATE
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,11 +61,10 @@ public class MainActivity extends AppCompatActivity {
 
         ButterKnife.bind(MainActivity.this);
 
-        Util.checkAppPermissions(MainActivity.this);
+        checkAppPermissions(this);
 
         gpsTracker = new GpsTracker(MainActivity.this);
 
-        //check if GPS is enable
         if (gpsTracker.isCanGetLocation()) {
             double lat = gpsTracker.getLatitude();
             double lon = gpsTracker.getLongitude();
@@ -66,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
 
         WeatherAPI weatherAPI = service.weatherAPIService;
 
-        Call<WeatherData> weatherDataCall = weatherAPI.getCurrentWeather(lat, lon, Util.API_KEY, Util.UNITS, Util.LANGUAGE);
+        Call<WeatherData> weatherDataCall = weatherAPI.getCurrentWeather(lat, lon, Constants.API_KEY, Constants.UNITS, Constants.LANGUAGE);
 
         weatherDataCall.enqueue(new Callback<WeatherData>() {
             @Override
@@ -93,6 +105,24 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    public static void checkAppPermissions(Activity activity){
+        if (!hasPermissions(activity, ALL_PERMISSIONS)) {
+            ActivityCompat.requestPermissions(activity, ALL_PERMISSIONS, ALL_PERMISSIONS_REQUEST);
+        }
+    }
+
+    @TargetApi(Build.VERSION_CODES.M)
+    public static boolean hasPermissions(Activity activity, String... permissions) {
+        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && activity != null && permissions != null) {
+            for (String permission : permissions) {
+                if (ActivityCompat.checkSelfPermission(activity, permission) != PackageManager.PERMISSION_GRANTED) {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
     @Override
